@@ -1,6 +1,8 @@
 #include <iostream>
 
 #include "Lexer.h"
+#include "Program.h"
+#include "ParseError.h"
 
 int main()
 {
@@ -9,38 +11,28 @@ int main()
     while (true)
     {
         BF::Lexer::Token token = lexer.next();
+        BF::AST::Program program;
+        bool             ok = true;
 
-        if (token == BF::Lexer::Token::NONE)
-            return 0;
-        
-        switch (token)
+        try
         {
-        case BF::Lexer::Token::LEFT:
-            std::cout << "LEFT" << std::endl;
-            break;
-        case BF::Lexer::Token::RIGHT:
-            std::cout << "RIGHT" << std::endl;
-            break;
-        case BF::Lexer::Token::PLUS:
-            std::cout << "PLUS" << std::endl;
-            break;
-        case BF::Lexer::Token::MINUS:
-            std::cout << "MINUS" << std::endl;
-            break;
-        case BF::Lexer::Token::OPEN:
-            std::cout << "OPEN" << std::endl;
-            break;
-        case BF::Lexer::Token::CLOSE:
-            std::cout << "CLOSE" << std::endl;
-            break;
-        case BF::Lexer::Token::READ:
-            std::cout << "READ" << std::endl;
-            break;
-        case BF::Lexer::Token::WRITE:
-            std::cout << "WRITE" << std::endl;
-            break;
-        default:
-            break;
+            program.parse(lexer);
+        }
+        catch (BF::ParseError& error)
+        {
+            std::cerr << "Parse error: " << error.what() << std::endl;
+            ok = false;
+        }
+
+        if (ok)
+        {
+            std::cerr << "Parsing OK" << std::endl;
+            return 0;
+        }
+        else
+        {
+            std::cerr << "Parsing NOK" << std::endl;
+            return 1;
         }
     }
 }

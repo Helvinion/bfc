@@ -1,6 +1,8 @@
 #pragma once
 
 #include <istream>
+#include <stack>
+#include <string>
 
 namespace BF
 {
@@ -23,10 +25,15 @@ namespace BF
 		Lexer(std::istream& input);
 
 		Token next();
+		void  put(Token token);
+		unsigned int location();
+
+		static Token       convert(char c);
+		static std::string convert(Token token);
+
 	private:
-
-		Token convert(char c);
-
-		std::istream& input_;
+		unsigned int      location_;
+		std::istream&     input_;
+		std::stack<Token> stock_;
 	};
 }
