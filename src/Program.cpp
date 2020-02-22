@@ -22,5 +22,16 @@ namespace BF
 				throw ParseError(message.str());
 			}
 		}
+
+		void Program::print(std::ostream& out)
+		{
+			instructions_.print(out);
+			out << std::endl;
+		}
+
+		void Program::prettyprint(std::ostream& out, unsigned int indentation)
+		{
+			instructions_.prettyprint(out, 0);
+		}
 	}
 }

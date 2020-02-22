@@ -10,7 +10,6 @@ int main()
 
     while (true)
     {
-        BF::Lexer::Token token = lexer.next();
         BF::AST::Program program;
         bool             ok = true;
 
@@ -26,7 +25,8 @@ int main()
 
         if (ok)
         {
-            std::cerr << "Parsing OK" << std::endl;
+            program.print(std::cerr);
+            program.prettyprint(std::cout);
             return 0;
         }
         else

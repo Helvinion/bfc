@@ -42,5 +42,17 @@ namespace BF
 				}
 			}
 		}
+		
+		void InstructionList::print(std::ostream& out)
+		{
+			for (unsigned int i = 0; i < instructions_.size(); i++)
+				instructions_[i]->print(out);
+		}
+
+		void InstructionList::prettyprint(std::ostream& out, unsigned int indentation)
+		{
+			for (unsigned int i = 0; i < instructions_.size(); i++)
+				instructions_[i]->prettyprint(out, indentation);
+		}
 	}
 }

@@ -32,5 +32,18 @@ namespace BF
 				}
 			}
 		}
+
+		void InstructionPack::print(std::ostream& out)
+		{
+			for (unsigned int i = 0; i < amount_; i++)
+				out << Lexer::convert(type_);
+		}
+
+		void InstructionPack::prettyprint(std::ostream& out, unsigned int indentation)
+		{
+			out << std::string(4 * indentation, ' ');
+			print(out);
+			out << std::endl;
+		}
 	}
 }

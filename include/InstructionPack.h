@@ -11,6 +11,9 @@ namespace BF
 		{
 		public:
 			virtual void parse(Lexer& lexer);
+
+			virtual void print(std::ostream& out);
+			virtual void prettyprint(std::ostream& out, unsigned int indentation = 0);
 		private:
 			Lexer::Token type_;
 			unsigned int amount_;

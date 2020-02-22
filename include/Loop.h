@@ -12,6 +12,9 @@ namespace BF
 		{
 		public:
 			virtual void parse(Lexer& lexer);
+			virtual void print(std::ostream& out);
+			virtual void prettyprint(std::ostream& out, unsigned int indentation);
+
 		private:
 			InstructionList instructions_;
 		};
