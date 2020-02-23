@@ -7,17 +7,17 @@
 
 namespace BF
 {
-	namespace AST
-	{
-		class InstructionList : public AstNode
-		{
-		public:
-			virtual void parse(Lexer& lexer);
-			virtual void prettyprint(std::ostream& out, unsigned int indentation = 0);
-			virtual void print(std::ostream& out);
+    namespace AST
+    {
+        class InstructionList : public AstNode
+        {
+        public:
+            virtual void parse(Lexer& lexer);
+            virtual void prettyprint(std::ostream& out, unsigned int indentation = 0);
+            virtual void print(std::ostream& out);
 
-		private:
-			std::vector<Pack*> instructions_;
-		};
-	}
+        private:
+            std::vector<Pack*> instructions_;
+        };
+    }
 }

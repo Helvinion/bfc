@@ -5,10 +5,10 @@
 
 namespace BF
 {
-	namespace AST
-	{
-		class Pack : public AstNode
-		{
-		};
-	}
+    namespace AST
+    {
+        class Pack : public AstNode
+        {
+        };
+    }
 }

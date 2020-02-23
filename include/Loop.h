@@ -6,17 +6,17 @@
 
 namespace BF
 {
-	namespace AST
-	{
-		class Loop : public Pack
-		{
-		public:
-			virtual void parse(Lexer& lexer);
-			virtual void print(std::ostream& out);
-			virtual void prettyprint(std::ostream& out, unsigned int indentation);
+    namespace AST
+    {
+        class Loop : public Pack
+        {
+        public:
+            virtual void parse(Lexer& lexer);
+            virtual void print(std::ostream& out);
+            virtual void prettyprint(std::ostream& out, unsigned int indentation);
 
-		private:
-			InstructionList instructions_;
-		};
-	}
+        private:
+            InstructionList instructions_;
+        };
+    }
 }
