@@ -49,6 +49,12 @@ namespace BF
                 instructions_[i]->print(out);
         }
 
+        void InstructionList::print_amd64(std::ostream& out)
+        {
+            for (unsigned int i = 0; i < instructions_.size(); i++)
+                instructions_[i]->print_amd64(out);
+        }
+
         void InstructionList::print_c(std::ostream& out, unsigned int indentation)
         {
             for (unsigned int i = 0; i < instructions_.size(); i++)

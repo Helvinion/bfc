@@ -77,6 +77,7 @@ namespace BF
             virtual void prettyprint(std::ostream& out, unsigned int indentation = 0);
             virtual void print_c(std::ostream& out, unsigned int indentation = 0);
             virtual void print(std::ostream& out);
+            virtual void print_amd64(std::ostream& out);
         private:
             InstructionList instructions_;
         };

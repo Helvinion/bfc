@@ -25,7 +25,7 @@ int main()
 
         if (ok)
         {
-            program.print_c(std::cout);
+            program.print_amd64(std::cout);
             return 0;
         }
         else

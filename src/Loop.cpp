@@ -23,6 +23,21 @@ namespace BF
             out << "]";
         }
 
+        void Loop::print_amd64(std::ostream& out)
+        {
+            static unsigned int loop_id = 0;
+
+            unsigned int my_id = loop_id;
+            loop_id++;
+            
+            out << "loop" << my_id << ":" << std::endl;
+            instructions_.print_amd64(out);
+            out << "    cmp  [rbx], BYTE 0" << std::endl;
+            out << "    je   endloop" << my_id << std::endl;
+            out << "    jmp  loop" << my_id << std::endl;
+            out << "endloop" << my_id << ":" << std::endl;
+        }
+
         void Loop::print_c(std::ostream& out, unsigned int indentation)
         {
             out << std::string(4 * indentation, ' ') << "while (*ptr)" << std::endl;

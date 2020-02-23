@@ -39,6 +39,36 @@ namespace BF
                 out << Lexer::convert(type_);
         }
 
+        void InstructionPack::print_amd64(std::ostream& out)
+        {
+            switch (type_)
+            {
+            case Lexer::Token::LEFT:
+                out << "    sub  rbx, 0d" << amount_ << std::endl;
+                break;
+            case Lexer::Token::RIGHT:
+                out << "    add  rbx, 0d" << amount_ << std::endl;
+                break;
+            case Lexer::Token::PLUS:
+                out << "    add  BYTE [rbx], 0d" << amount_ << std::endl;
+                break;
+            case Lexer::Token::MINUS:
+                out << "    sub  BYTE [rbx], 0d" << amount_ << std::endl;
+                break;
+            case Lexer::Token::READ:
+                out << "    call getchar" << std::endl;
+                out << "    mov  BYTE [rbx], al" << std::endl;
+                break;
+            case Lexer::Token::WRITE:
+                out << "    mov  rdi, 0d" << std::endl;
+                out << "    mov  dil, BYTE [rbx]" << std::endl;
+                out << "    call putchar" << std::endl;
+                break;
+            default:
+                break; // Should not happen
+            }
+        }
+
         void InstructionPack::print_c(std::ostream& out, unsigned int indentation)
         {
             std::string indent(4 * indentation, ' ');
@@ -66,8 +96,7 @@ namespace BF
                     out << indent << "putchar(*ptr);" << std::endl;
                 break;
             default:
-                break;
-                // Should not happen.
+                break; // Should not happen.
             }
         }
 

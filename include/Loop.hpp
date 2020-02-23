@@ -13,6 +13,7 @@ namespace BF
         public:
             virtual void parse(Lexer& lexer);
             virtual void print(std::ostream& out);
+            virtual void print_amd64(std::ostream& out);
             virtual void prettyprint(std::ostream& out, unsigned int indentation);
             virtual void print_c(std::ostream& out, unsigned int indentation);
 
