@@ -2,7 +2,7 @@
 
 #include <sstream>
 
-#include "Lexer.h"
+#include "Lexer.hpp"
 
 namespace BF
 {
@@ -14,6 +14,7 @@ namespace BF
             virtual void parse(Lexer& lexer) = 0;
             virtual void prettyprint(std::ostream& out, unsigned int indentation = 0) = 0;
             virtual void print(std::ostream& out) = 0;
+            virtual void print_c(std::ostream& out, unsigned int indentation = 0) = 0;
         };
     }
 }

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Pack.h"
-#include "InstructionList.h"
-#include "Lexer.h"
+#include "Pack.hpp"
+#include "InstructionList.hpp"
+#include "Lexer.hpp"
 
 namespace BF
 {
@@ -14,6 +14,7 @@ namespace BF
             virtual void parse(Lexer& lexer);
             virtual void print(std::ostream& out);
             virtual void prettyprint(std::ostream& out, unsigned int indentation);
+            virtual void print_c(std::ostream& out, unsigned int indentation);
 
         private:
             InstructionList instructions_;

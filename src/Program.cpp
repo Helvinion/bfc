@@ -1,7 +1,7 @@
 #include <sstream>
 
-#include "Program.h"
-#include "ParseError.h"
+#include "Program.hpp"
+#include "ParseError.hpp"
 
 namespace BF
 {
@@ -27,6 +27,21 @@ namespace BF
         {
             instructions_.print(out);
             out << std::endl;
+        }
+
+        void Program::print_c(std::ostream& out, unsigned int indentation)
+        {
+            (void)indentation;
+
+            out << "#include <stdio.h>" << std::endl;
+            out << std::endl;
+            out << "int main()" << std::endl;
+            out << "{" << std::endl;
+            out << "    char array[30000] = {0};" << std::endl;
+            out << "    char *ptr = array;" << std::endl;
+            out << std::endl;
+            instructions_.print_c(out, 1);
+            out << "}" << std::endl;
         }
 
         void Program::prettyprint(std::ostream& out, unsigned int indentation)

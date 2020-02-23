@@ -1,7 +1,7 @@
 #pragma once
 
-#include "AstNode.h"
-#include "Lexer.h"
+#include "AstNode.hpp"
+#include "Lexer.hpp"
 
 namespace BF
 {

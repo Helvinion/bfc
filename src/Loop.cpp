@@ -1,5 +1,5 @@
-#include "Loop.h"
-#include "ParseError.h"
+#include "Loop.hpp"
+#include "ParseError.hpp"
 
 namespace BF
 {
@@ -21,6 +21,14 @@ namespace BF
             out << "[";
             instructions_.print(out);
             out << "]";
+        }
+
+        void Loop::print_c(std::ostream& out, unsigned int indentation)
+        {
+            out << std::string(4 * indentation, ' ') << "while (*ptr)" << std::endl;
+            out << std::string(4 * indentation, ' ') << "{" << std::endl;
+            instructions_.print_c(out, indentation + 1);
+            out << std::string(4 * indentation, ' ') << "}" << std::endl;
         }
 
         void Loop::prettyprint(std::ostream& out, unsigned int indentation)

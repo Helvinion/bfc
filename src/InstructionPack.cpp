@@ -1,5 +1,5 @@
-#include "InstructionPack.h"
-#include "Lexer.h"
+#include "InstructionPack.hpp"
+#include "Lexer.hpp"
 
 namespace BF
 {
@@ -37,6 +37,38 @@ namespace BF
         {
             for (unsigned int i = 0; i < amount_; i++)
                 out << Lexer::convert(type_);
+        }
+
+        void InstructionPack::print_c(std::ostream& out, unsigned int indentation)
+        {
+            std::string indent(4 * indentation, ' ');
+            
+            switch (type_)
+            {
+            case Lexer::Token::LEFT:
+                out << indent << "ptr -= " << amount_ << ";" << std::endl;
+                break;
+            case Lexer::Token::RIGHT:
+                out << indent << "ptr += " << amount_ << ";" << std::endl;
+                break;
+            case Lexer::Token::PLUS:
+                out << indent << "*ptr += " << amount_ << ";" << std::endl;
+                break;
+            case Lexer::Token::MINUS:
+                out << indent << "*ptr -= " << amount_ << ";" << std::endl;
+                break;
+            case Lexer::Token::READ:
+                for (unsigned int i = 0; i < amount_; i++)
+                    out << indent << "*ptr = getchar();" << std::endl;
+                break;
+            case Lexer::Token::WRITE:
+                for (unsigned int i = 0; i < amount_; i++)
+                    out << indent << "putchar(*ptr);" << std::endl;
+                break;
+            default:
+                break;
+                // Should not happen.
+            }
         }
 
         void InstructionPack::prettyprint(std::ostream& out, unsigned int indentation)

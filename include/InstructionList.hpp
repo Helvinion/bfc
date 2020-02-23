@@ -2,8 +2,8 @@
 
 #include <vector>
 
-#include "AstNode.h"
-#include "Pack.h"
+#include "AstNode.hpp"
+#include "Pack.hpp"
 
 namespace BF
 {
@@ -14,6 +14,7 @@ namespace BF
         public:
             virtual void parse(Lexer& lexer);
             virtual void prettyprint(std::ostream& out, unsigned int indentation = 0);
+            virtual void print_c(std::ostream& out, unsigned int indentation = 0);
             virtual void print(std::ostream& out);
 
         private:

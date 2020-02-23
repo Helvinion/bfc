@@ -1,7 +1,7 @@
 #pragma once
 
-#include "InstructionList.h"
-#include "AstNode.h"
+#include "InstructionList.hpp"
+#include "AstNode.hpp"
 
 /*
 program:
@@ -75,6 +75,7 @@ namespace BF
             virtual void parse(Lexer& lexer);
 
             virtual void prettyprint(std::ostream& out, unsigned int indentation = 0);
+            virtual void print_c(std::ostream& out, unsigned int indentation = 0);
             virtual void print(std::ostream& out);
         private:
             InstructionList instructions_;

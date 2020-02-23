@@ -1,8 +1,8 @@
 #include <iostream>
 
-#include "Lexer.h"
-#include "Program.h"
-#include "ParseError.h"
+#include "Lexer.hpp"
+#include "Program.hpp"
+#include "ParseError.hpp"
 
 int main()
 {
@@ -25,8 +25,7 @@ int main()
 
         if (ok)
         {
-            program.print(std::cerr);
-            program.prettyprint(std::cout);
+            program.print_c(std::cout);
             return 0;
         }
         else
