@@ -1,5 +1,5 @@
 #include "InstructionPack.h"
-#include "Lexer.h";
+#include "Lexer.h"
 
 namespace BF
 {

@@ -31,7 +31,7 @@ namespace BF
 
 		void Program::prettyprint(std::ostream& out, unsigned int indentation)
 		{
-			instructions_.prettyprint(out, 0);
+			instructions_.prettyprint(out, indentation);
 		}
 	}
 }
