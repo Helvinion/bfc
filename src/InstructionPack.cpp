@@ -57,11 +57,18 @@ namespace BF
                 break;
             case Lexer::Token::READ:
                 for (unsigned int i = 0; i < amount_; i++)
-                    out << "    call bf_input" << std::endl;
+                {
+                    out << "    call getchar" << std::endl;
+                    out << "    mov  BYTE [rbx], al" << std::endl;
+                }
                 break;
             case Lexer::Token::WRITE:
                 for (unsigned int i = 0; i < amount_; i++)
-                    out << "    call bf_output" << std::endl;
+                {
+                    out << "    mov  rdi, 0d" << std::endl;
+                    out << "    mov  dil, BYTE [rbx]" << std::endl;
+                    out << "    call putchar" << std::endl;
+                }
                 break;
             default:
                 break; // Should not happen
@@ -88,11 +95,11 @@ namespace BF
                 break;
             case Lexer::Token::READ:
                 for (unsigned int i = 0; i < amount_; i++)
-                    out << indent << "*ptr = bf_input();" << std::endl;
+                    out << indent << "*ptr = getchar();" << std::endl;
                 break;
             case Lexer::Token::WRITE:
                 for (unsigned int i = 0; i < amount_; i++)
-                    out << indent << "bf_output(*ptr);" << std::endl;
+                    out << indent << "putchar(*ptr);" << std::endl;
                 break;
             default:
                 break; // Should not happen.
