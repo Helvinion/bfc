@@ -31,10 +31,11 @@ namespace BF
             loop_id++;
             
             out << "loop" << my_id << ":" << std::endl;
-            instructions_.print_amd64(out);
             out << "    cmp  [rbx], BYTE 0" << std::endl;
             out << "    je   endloop" << my_id << std::endl;
-            out << "    jmp  loop" << my_id << std::endl;
+            instructions_.print_amd64(out);
+            out << "    cmp  [rbx], BYTE 0" << std::endl;
+            out << "    jne   loop" << my_id << std::endl;
             out << "endloop" << my_id << ":" << std::endl;
         }
 
