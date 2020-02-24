@@ -72,6 +72,7 @@ namespace BF
         class Program : public AstNode
         {
         public:
+            Program(const std::string& size = "30000");
             virtual void parse(Lexer& lexer);
 
             virtual void prettyprint(std::ostream& out, unsigned int indentation = 0);
@@ -80,6 +81,7 @@ namespace BF
             virtual void print_amd64(std::ostream& out);
         private:
             InstructionList instructions_;
+            int size_memory_;
         };
     }
 }
